@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Run docker-compose build
+      command: docker-compose build
+      args:
+        chdir: /home/caseuser/case-a
+
+    - name: Run docker-compose up
+      command: docker-compose up -d 
+      args:
+        chdir: /home/caseuser/case-a
