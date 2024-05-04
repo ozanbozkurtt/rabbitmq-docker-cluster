@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  rabbitmq-node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: rabbit1
+    container_name: rabbit1
+    networks:
+      - rabbitmq-net
+    restart: always
+    environment:
+      - RABBITMQ_HOSTNAME=rabbit1
+      - RABBITMQ_ERLANG_COOKIE='secretcookie'
+
+  rabbitmq-node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: rabbit2
+    container_name: rabbit2
+    networks:
+      - rabbitmq-net
+    restart: always
+    environment:
+      - RABBITMQ_HOSTNAME=rabbit2
+      - RABBITMQ_ERLANG_COOKIE='secretcookie'
+  rabbitmq-node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: rabbit3
+    container_name: rabbit3
+    networks:
+      - rabbitmq-net
+    restart: always
+    environment:
+      - RABBITMQ_HOSTNAME=rabbit3
+      - RABBITMQ_ERLANG_COOKIE='secretcookie'
+
+networks:
+  rabbitmq-net:
+    driver: bridge
